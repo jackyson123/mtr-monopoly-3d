@@ -7,16 +7,16 @@ permissions:
 
 jobs:
   unpack:
-    if: hashFiles('packed/**') != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: node scripts/unpack.mjs
-      - run: rm -rf packed .github/workflows/unpack-source.yml
-      - run: |
+      - name: Unpack packed sources and commit
+        run: |
+          if [ ! -d packed ]; then echo "already unpacked"; exit 0; fi
+          node scripts/unpack.mjs
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
