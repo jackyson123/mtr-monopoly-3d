@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>港鐵大富翁 3D · MTR MONOPOLY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="stage"></canvas>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+
+      <header class="brand">
+        <div class="lineStrip">
+          <i style="--c: #e2231a"></i><i style="--c: #00ab4e"></i><i style="--c: #007dc5"></i
+          ><i style="--c: #f7943e"></i><i style="--c: #9a3b26"></i><i style="--c: #7d499d"></i
+          ><i style="--c: #53b7e8"></i><i style="--c: #b5bd00"></i>
+        </div>
+        <h1>港鐵大富翁</h1>
+        <p>MTR MONOPOLY <span>·</span> 3D</p>
+      </header>
+
+      <section class="players" id="players"></section>
+
+      <aside class="logPanel">
+        <div class="logHead">
+          <span class="dot"></span>
+          <b>行車日誌</b>
+          <em>TRAFFIC LOG</em>
+        </div>
+        <div class="logList" id="logList"></div>
+      </aside>
+
+      <div class="dock">
+        <div class="dockMeta">
+          <div class="metaCell">
+            <span class="metaLabel">骰子</span>
+            <div class="diceChips">
+              <b id="d1">–</b><b id="d2">–</b><em id="diceSum"></em>
+            </div>
+          </div>
+          <div class="metaCell">
+            <span class="metaLabel">車費池</span>
+            <b class="metaValue" id="pot">HK$0</b>
+          </div>
+          <div class="metaCell">
+            <span class="metaLabel">時段</span>
+            <b class="metaValue" id="rush">正常</b>
+          </div>
+          <div class="metaCell">
+            <span class="metaLabel">回合</span>
+            <b class="metaValue" id="round">1</b>
+          </div>
+        </div>
+        <div class="hint" id="hint">準備出發</div>
+        <div class="actions" id="actions"></div>
+      </div>
+
+      <div class="tooltip hidden" id="tooltip"></div>
+      <div class="toasts" id="toasts"></div>
+
+      <div class="modal hidden" id="modal">
+        <div class="sheet" id="sheet"></div>
+      </div>
+
+      <div class="start" id="start">
+        <div class="startGlow"></div>
+        <div class="startInner">
+          <div class="startKicker">HONG KONG · MASS TRANSIT RAILWAY</div>
+          <h1>港鐵<em>大富翁</em></h1>
+          <p class="startSub">買盡全港車站，鋪滿上蓋物業，成為路綫之王。</p>
+          <div class="startLines">
+            <i style="--c: #e2231a"></i><i style="--c: #00ab4e"></i><i style="--c: #007dc5"></i
+            ><i style="--c: #f7943e"></i><i style="--c: #9a3b26"></i><i style="--c: #7d499d"></i
+            ><i style="--c: #53b7e8"></i><i style="--c: #b5bd00"></i>
+          </div>
+          <div class="rolePicker" id="rolePicker"></div>
+          <button class="bigBtn" id="startBtn">開始遊戲</button>
+          <ul class="startTips">
+            <li><b>擲骰</b> 沿路綫前進，買入未售車站</li>
+            <li><b>搭車</b> 轉綫站免費轉乘、機場快綫任意飛站</li>
+            <li><b>上蓋</b> 升級商舖至摩天塔，車費倍升</li>
+            <li><b>目標</b> 集齊 3 條路綫，或成為最後生還者</li>
+            <li><b>角色</b> 車長／站長／工程師／乘客各有專長</li>
+            <li><b>繁忙時間</b> 第 8 回合起全綫車費 ×1.5</li>
+          </ul>
+          <div class="startFoot">拖曳旋轉棋盤 · 滾輪縮放 · 停留查看車站資料</div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
